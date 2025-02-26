@@ -9,7 +9,6 @@ on:
 jobs:
   automerge:
     name: Merge dependabot's PRs
-    needs: test
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
