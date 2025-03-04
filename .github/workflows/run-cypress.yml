@@ -1,0 +1,28 @@
+name: Run Cypress
+
+on:
+  push:     # Todo: Remove on push
+    branches:
+      - testllm
+  workflow_dispatch:
+
+jobs:
+  run-cypress:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Cypress
+        env:
+          OPEN_AI_API_KEY: ${{ secrets.OPEN_AI_API_KEY }}
+        run: npm run cypress:run -- --env openai_api_key=$OPEN_AI_API_KEY
