@@ -34,9 +34,7 @@
     "cypress": "^10.0.0" 
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx}": [
-      "yarn format"
-    ]
+    "*.{js,jsx}": "eslint --cache --fix"
   }
 }
 
